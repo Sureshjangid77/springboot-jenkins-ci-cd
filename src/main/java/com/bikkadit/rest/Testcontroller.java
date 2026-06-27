@@ -8,6 +8,6 @@ public class Testcontroller {
 
     @GetMapping("/")
     public String home() {
-        return "Msg from TestController";
+        return "Msg from TestController to git";
     }
 }
