@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean compile'
@@ -31,15 +25,27 @@ pipeline {
             }
         }
 
-        stage('Archive Jar') {
+        stage('Debug') {
+            steps {
+                bat 'dir target'
+            }
+        }
+
+        stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
 
-        stage('Deploy (Local Run)') {
+        stage('Deploy') {
             steps {
-                bat 'echo Build Completed - Ready for deployment'
+                bat 'copy /Y target\\SBjenkinsTesting-0.0.1-SNAPSHOT.jar C:\\Deployments\\'
+            }
+        }
+
+        stage('JUnit Report') {
+            steps {
+                junit 'target/surefire-reports/*.xml'
             }
         }
     }
