@@ -8,6 +8,6 @@ public class Testcontroller {
 
     @GetMapping("/")
     public String home() {
-        return "Msg from TestController to git for autometic start application";
+        return "checking for jenkins start automectically ";
     }
 }

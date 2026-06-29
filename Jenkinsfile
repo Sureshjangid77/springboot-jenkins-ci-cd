@@ -37,16 +37,14 @@ pipeline {
             }
         }
 
- stage('Deploy') {
+stage('Deploy') {
     steps {
         bat '''
         echo Deploying Spring Boot App...
 
         copy /Y target\\SBjenkinsTesting-0.0.1-SNAPSHOT.jar C:\\Deployments\\
 
-        taskkill /F /IM java.exe || echo No old application running
-
-        start "" java -jar C:\\Deployments\\SBjenkinsTesting-0.0.1-SNAPSHOT.jar
+        echo Deployment completed.
         '''
     }
 }
