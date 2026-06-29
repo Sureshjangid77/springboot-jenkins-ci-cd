@@ -45,6 +45,15 @@ pipeline {
                 '''
             }
         }
+        stage('Run Application') {
+    steps {
+        bat '''
+        echo Starting Spring Boot Application...
+
+        start "" java -jar C:\\Deployments\\SBjenkinsTesting-0.0.1-SNAPSHOT.jar
+        '''
+    }
+}
 
         stage('JUnit Report') {
             steps {
