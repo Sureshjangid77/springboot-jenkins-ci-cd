@@ -41,7 +41,7 @@ pipeline {
             steps {
                 bat '''
                 echo Deploying Spring Boot App...
-                copy /Y target\\SBJenkinsTesting-0.0.1-SNAPSHOT.jar C:\\Deployments\\
+                copy /Y target\\SBjenkinsTesting-0.0.1-SNAPSHOT.jar C:\\Deployments\\
                 '''
             }
         }
